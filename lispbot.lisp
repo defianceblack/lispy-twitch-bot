@@ -13,7 +13,7 @@
 (defparameter *client* (wsd:make-client (second (get-file *path-to-conf*))))
 (defvar *oauth* (first (get-file *path-to-conf*)))
 
-(defparameter *target-channel* "#dario_satu")
+(defparameter *target-channel* "#exodiquas")
 
 (wsd:start-connection *client*)
 
