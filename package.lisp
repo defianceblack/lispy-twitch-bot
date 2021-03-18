@@ -1,4 +1,6 @@
 ;;;; package.lisp
 
 (defpackage #:lispbot
-  (:use #:cl))
+  (:use #:cl)
+  (:export
+   :run))
