@@ -3,6 +3,8 @@ A small and 'hopefully' save Lisp REPL for Twitch. Powered by cl-isolated.
 
 If you want to use the bot by yourself, be aware that you have to trust [cl-isolated](https://github.com/kanru/cl-isolated) that it is an actual save environment. 
 
+*NEW*: The bot is now able to evaluate a command in an isolated docker container all by itself.
+
 If you want to be super secure just put the bot in a docker and run the docker from a virtual machine. If someone can break out of this they probably deserve the loot. Kappa (just kidding)
 
 ## Usage
