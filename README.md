@@ -15,6 +15,10 @@ The first line in the init file should be your oauth token, the second one is th
 
 *DO NOT DOX YOUR OAUTH TOKEN*
 
+## Compilation
+
+You could now potentially just compile the bot with `sbcl --eval "(asdf:operate :build-op :lispbot)"` but for some reason the bot will not stay connected to the Twitch IRC. I have no idea why this is and I also just run the bot in a SBCL REPL, so I actually do not care enough to investigate.
+
 Have fun!
 
 
