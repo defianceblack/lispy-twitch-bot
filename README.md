@@ -9,11 +9,11 @@ If you want to be super secure just put the bot in a docker and run the docker f
 
 ## Usage
 
-Just `(ql:quickload :lispbot)` and it runs automatically. You just have to change the vars in the code. `*target_channel*` should be the channel you want the bot to connect. The call to `connect-join-channel` should take the name of your bot account as first argument. You can use your main twitch account for it aswell if you want, but I never tried it.
+Just `(ql:quickload :lispbot)` and run the function `(run-from-repl "docker-container" "#channel-name" "my-bot-name")`. Do not forget the *octothorp* (or *hashtag* how the cool kids say today) in front of your channel name. You just have to change the vars in the code.
 
 Put the `init.conf` in the `~/.config/lispbot/` directory or replace the `*path-to-conf*` variable with your desired path.
 
-The first line in the init file should be your oauth token, the second one is the websocket you want to connect to (currently only unsecure websocket is supported, but who cares in this case?) the last one is the initial message the bot barfs into the chat to welcome everyone.
+The first line in the init file has to be your OAuth token, the second one is the websocket you want to connect to (currently only unsecure websocket is supported, but who cares in this case?) the last one is the initial message the bot barfs into the chat to welcome everyone.
 
 *DO NOT DOX YOUR OAUTH TOKEN*
 
