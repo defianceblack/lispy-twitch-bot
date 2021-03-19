@@ -1,4 +1,4 @@
-# twitchreplbot
+# Twitch REPL
 A small and 'hopefully' save Lisp REPL for Twitch. Powered by cl-isolated.
 
 If you want to use the bot by yourself, be aware that you have to trust [cl-isolated](https://github.com/kanru/cl-isolated) that it is an actual save environment. 
