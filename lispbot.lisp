@@ -21,9 +21,10 @@
   
   (wsd:on :message *client*
 	  (lambda (msg)
-	    (pong (string-trim '(#\Space #\Tab #\Newline ) (format nil "~A" msg)))
-	    (let ((message (dispatch-msg (extract-msg msg))))
-	      (dispatch-msg message))))
+	    (when (not (find #\; msg :test #'equal))
+	      (pong (string-trim '(#\Space #\Tab #\Newline ) (format nil "~A" msg)))
+	      (let ((message (dispatch-msg (extract-msg msg))))
+		(dispatch-msg message)))))
 
   (wsd:on :close *client*
 	  (lambda (&key code reason)
@@ -42,6 +43,7 @@
 
 (defun run-docker (cmd)
   "Executes a given command via docker encapsulation."
+  (send :privmsg "Please no ; in your evals." *target-channel*)
   (string-trim '(#\newline #\space) (uiop:run-program
 				     (list "docker"
 					   "run"
@@ -89,6 +91,15 @@
   (wsd:send *client* (format nil "NICK ~a" nick))
   (wsd:send *client* (format nil "JOIN ~a" chan))
   (wsd:send *client* (format nil "PRIVMSG ~a :~A" chan (third (get-file *path-to-conf*)))))
+
+(defun run-from-repl (docker target-channel bot-name)
+  "Start the bot in a REPL."
+  (setf *docker* docker)
+  (setf *target-channel* target-channel)
+  (setf *bot-name* bot-name)
+  (setf *client* (wsd:make-client (second (get-file *path-to-conf*))))
+  (start-connection)
+  (connect-join-channel *bot-name* *oauth* *target-channel*)) 
 
 (defun run ()
   "Entry point, starts the bot."
