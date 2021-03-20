@@ -43,7 +43,6 @@
 
 (defun run-docker (cmd)
   "Executes a given command via docker encapsulation."
-  (send :privmsg "Please no ; in your evals." *target-channel*)
   (string-trim '(#\newline #\space) (uiop:run-program
 				     (list "docker"
 					   "run"
